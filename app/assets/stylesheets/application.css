@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+/* navbar */
+ .navbar-text {
+     font-size: 22px;
+     font-weight: 500;
+ }
+
+ .navbar-title {
+    font-size: 30px;
+    font-weight: 350;
+    color: darkcyan;
+}
