@@ -23,10 +23,10 @@
     <div class="navbar-item">
       <div class="field has-addons">
         <div class="control">
-          <input class="input is-primary" type="text" placeholder="今天我想來點......">
+          <input class="input is-info" type="text" placeholder="今天我想來點......">
         </div>
         <div class="control">
-          <a class="button is-primary ">
+          <a class="button is-info ">
             <i class="fas fa-search"></i> &nbsp; 搜尋
           </a>
         </div>
@@ -37,12 +37,26 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
+          <% if user_signed_in? %>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <i class="fas fa-user">&nbsp;</i><%= current_user.email %>
+              </a>
+
+              <div class="navbar-dropdown">
+                <%= link_to "個人資料", edit_user_registration_path, class: 'navbar-item'%>
+                <a class="navbar-item">
+                  訂單記錄
+                </a>
+                <hr class="navbar-divider">
+                <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'navbar-item', data: {confirm: '是否確定登出？'}%>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to "註冊", new_user_registration_path, class: "button is-info"%>
+            <%= link_to "登入", user_session_path, class: "button is-light"%>          
+          <% end %>
+
         </div>
       </div>
     </div>

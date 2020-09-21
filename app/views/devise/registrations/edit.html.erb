@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class= "title">編輯個人資料 <%= resource_name.to_s.humanize %></h2><br>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+  
+    <div class="field-1">
+      <%= f.label '電子信箱', class: "label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+    </div>
+  
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+  
+    <div class="field-1">
+      <%= f.label '密碼', class: "label" %> <i>(leave blank if you don't want to change it)</i>
+      <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+  
+    <div class="field-1">
+      <%= f.label '確認密碼', class: "label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+    </div>
+  
+    <div class="field-1">
+      <%= f.label '目前密碼', class: "label" %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
+    </div>
+  
+    <div class="actions-1">
+      <%= f.submit "更新", class: "button is-info"%>
+    </div>
+  <% end %>
+  <div class="delete-account-button">
+    <%= link_to "刪除此帳號", registration_path(resource_name), class: "button is-danger", data: { confirm: "Are you sure?" }, method: :delete %>
+  </div>
+
+  <div>
+    <%= link_to "上一頁" ,:back, class: "button is-light" %>  
+  </div>
+</div>

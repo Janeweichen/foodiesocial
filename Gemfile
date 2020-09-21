@@ -2,7 +2,13 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
-
+gem 'bootstrap', '~> 4.5', '>= 4.5.2'
+gem 'pagy', '~> 3.8', '>= 3.8.3'
+gem 'friendly_id', '~> 5.4'
+gem 'paranoia', '~> 2.4', '>= 2.4.2'
+gem 'figaro', '~> 1.2'
+gem 'omniauth-google-oauth2', '~> 0.8.0'
+gem 'devise', '~> 4.7', '>= 4.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record
