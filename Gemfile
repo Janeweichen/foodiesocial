@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
+gem 'acts_as_list', '~> 1.0', '>= 1.0.2'
 gem 'bootstrap', '~> 4.5', '>= 4.5.2'
 gem 'pagy', '~> 3.8', '>= 3.8.3'
 gem 'friendly_id', '~> 5.4'
@@ -27,7 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

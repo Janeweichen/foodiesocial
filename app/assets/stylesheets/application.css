@@ -49,4 +49,7 @@ tr.t1{
  text-align: left;
 }
 
-
+/* products-show */
+.list-price {
+    text-decoration: line-through;
+}

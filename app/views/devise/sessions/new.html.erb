@@ -2,15 +2,28 @@
   <div class="columns">
     <div class="column is-was 6">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label '電子信箱', class: "label" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
-      </div>
-    
+        <div class="field">
+          <%= f.label '電子信箱', class: "label" %>
+        <p class="control has-icons-left has-icons-right">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "請輸入電子信箱" %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>    
+
       <div class="field">
         <%= f.label '密碼', class: "label"  %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
-      </div>
+        <p class="control has-icons-left">
+        <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: "請輸入密碼" %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>   
     
       <% if devise_mapping.rememberable? %>
         <div class="field">

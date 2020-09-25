@@ -15,17 +15,13 @@
     <div class="navbar-start">
       <%= link_to "廠商", admin_vendors_path, class: 'navbar-item' %>
       <%= link_to "商品", admin_products_path, class: 'navbar-item' %>
+      <%= link_to "分類", admin_categories_path, class: 'navbar-item' %>
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-light">
-            <strong>註冊</strong>
-          </a>
-          <a class="button is-grey">
-            登入
-          </a>
+                <%= link_to "登出", destroy_user_session_path, method: :delete, class: 'button is-light', data: {confirm: '是否確定登出？'}%>
         </div>
       </div>
     </div>
