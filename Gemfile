@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
+
+gem 'timecop', '~> 0.9.1'
 gem 'acts_as_list', '~> 1.0', '>= 1.0.2'
 gem 'bootstrap', '~> 4.5', '>= 4.5.2'
 gem 'pagy', '~> 3.8', '>= 3.8.3'
