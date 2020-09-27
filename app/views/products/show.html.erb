@@ -22,7 +22,7 @@
       </article>
     </div>
 
-    <div class="column is-5">
+    <div class="column is-5" data-controller="product" data-product-id="<%= @product.code%>">
       <h3 class="has-text-grey-light"><%= @product.vendor.title%></h3>
       <h2 class="title is-4"><%= @product.name%></h2>
       <p class="has-text-primary is-size-4">
@@ -40,7 +40,7 @@
             </div>
             <div class="column is-9 field is-grouped">
               <div class="select is-fullwidth is-medium">
-                <select>
+                <select data-target="product.sku">
                 <%= options_for_select(@product.skus.map { |p| [p.spec, p.id] }) %>
                 </select>
               </div>
@@ -53,13 +53,13 @@
         <div class="column is-3 is-size-4 has-text-right">
           數量
         </div>
-        <div class="column is-9 field is-grouped" data-controller="count">
-          <a href="#" class="button is-white is-medium" data-action="count#minus">-</a>
-          <input type="number" name="quantity" class="input is-medium has-text-centered" data-target="plus_minus_quantity.quantity" value="1" min="0">
-          <a href="#" class="button is-white is-medium" data-action="count#plus">+</a>
+        <div class="column is-9 field is-grouped" >
+          <a href="#" class="button is-white is-medium" data-action="product#minus">-</a>
+          <input type="number" name="quantity" class="input is-medium has-text-centered" data-target="product.quantity" value="1" min="0">
+          <a href="#" class="button is-white is-medium" data-action="product#plus">+</a>
         </div>
       </div>
-      <a href="#" class="button is-primary is-medium is-fullwidth">加到購物車</a>
+      <a href="#" class="button is-primary is-medium is-fullwidth" data-action="product#add_to_cart" data-target="product.addToCartButton">加到購物車</a>
     </div>
   </div>
 </section>
