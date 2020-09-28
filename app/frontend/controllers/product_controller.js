@@ -18,15 +18,23 @@ export default class extends Controller {
       data.append("quantity", quantity) ;
 
       Rails.ajax({
-        url:
+        url: "/api/v1/cart",
         data,
-        type: "Post",
+        type: "POST",
         success: resp => {
-
+          if (resp.status === 'ok')  {
+            let item_count = resp.items || 0;
+            let evt = new CustomEvent('addToCart', { 'detail': { item_count } }) ;
+            document.dispatchEvent(evt); 
+          }
         },
         error: err => {
-
+          console.log(err);
         },
+
+        complete: () => {
+          this.addToCartButtonTarget.classList.remove('is-loading');
+        }
 
       });
     }
