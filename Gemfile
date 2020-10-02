@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
+gem 'aasm', '~> 5.1', '>= 5.1.1'
+gem 'faraday', '~> 1.0', '>= 1.0.1'
 gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
 gem 'timecop', '~> 0.9.1'
 gem 'acts_as_list', '~> 1.0', '>= 1.0.2'

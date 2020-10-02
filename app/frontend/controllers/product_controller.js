@@ -49,7 +49,7 @@ export default class extends Controller {
   event.preventDefault();
   let q = Number(this.quantityTarget.value);
   if (q > 1) {
-    this.quantityTarget.value = q-1 ;
+    this.quantityTarget.value = q - 1 ;
   }
   };
 }

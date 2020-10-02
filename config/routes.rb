@@ -4,6 +4,22 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
+  resource :cart, only: [:show, :destroy] do
+    collection do
+      get :checkout
+    end
+  end
+  resources :orders, except: [:destroy, :new, :edit, :update] do
+    member do
+      delete :cancel  #/orders/8/cancel
+      post :pay
+      get :pay_confirm
+    end
+    
+    collection do
+      get :confirm
+    end
+  end
 
   namespace :admin do
     root 'products#index'
