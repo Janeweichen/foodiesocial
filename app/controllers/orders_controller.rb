@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_order, only: [:cancel, :pay, :pay_confirm]
+
 
   def index
    @orders = current_user.orders.order(id: :desc)
@@ -69,7 +71,6 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    @order = current_user.orders.find(params[:id])
     
     if @order.paid?
       resp = Faraday.post("#{ENV['line_pay_endpoint']}/v2/payments/#{@order.transaction_id}/refund") do |req|
@@ -92,7 +93,6 @@ class OrdersController < ApplicationController
   end
 
   def pay
-    @order = current_user.orders.find(params[:id])
 
     resp = Faraday.post("#{ENV['line_pay_endpoint']}/v2/payments/request") do |req|
       req.headers['Content-Type'] = 'application/json'
@@ -118,7 +118,6 @@ class OrdersController < ApplicationController
   end
 
   def pay_confirm
-    @order = current_user.orders.find(params[:id])  
 
     resp = Faraday.post("#{ENV['line_pay_endpoint']}/v2/payments/#{params[:transactionId]}/confirm") do |req|
       req.headers['Content-Type'] = 'application/json'
@@ -144,5 +143,9 @@ class OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:recipient, :tel, :address, :note)
+  end
+
+  def find_order
+    @order = current_user.orders.find(params[:id])
   end
 end
