@@ -23,9 +23,9 @@ class LinepayService
   end
 
   def order
-    {
+    
       order_id: @result["info"]["orderId"]
       transaction_id: @result["info"]["transactionId"]     
-    }
+    
   end
 end
